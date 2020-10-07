@@ -7,15 +7,17 @@
 
     <TextView
         android:id="@+id/a_vhd_textViewTitle"
-        android:layout_width="352dp"
-        android:layout_height="23dp"
+        android:layout_width="349dp"
+        android:layout_height="29dp"
         android:layout_marginTop="16dp"
-        android:text="title"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/a_vhd_textViewAuthor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="title" />
 
     <TextView
         android:id="@+id/a_vhd_textViewAuthor"
@@ -23,19 +25,20 @@
         android:layout_height="18dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="author"
         app:layout_constraintStart_toStartOf="@+id/a_vhd_textViewTitle"
-        app:layout_constraintTop_toBottomOf="@+id/a_vhd_textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/a_vhd_textViewTitle"
+        tools:text="author" />
 
     <TextView
         android:id="@+id/a_vhd_textViewDate"
         android:layout_width="93dp"
         android:layout_height="18dp"
         android:layout_marginTop="8dp"
-        android:text="date"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="@+id/a_vhd_textViewTitle"
         app:layout_constraintStart_toEndOf="@+id/a_vhd_textViewAuthor"
-        app:layout_constraintTop_toBottomOf="@+id/a_vhd_textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/a_vhd_textViewTitle"
+        tools:text="date" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -44,6 +47,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="imgBook"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/a_vhd_textViewAuthor"
         app:layout_constraintStart_toStartOf="@+id/a_vhd_textViewTitle"

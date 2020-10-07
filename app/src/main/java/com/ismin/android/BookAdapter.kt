@@ -24,9 +24,9 @@ class BookAdapter(private var books: ArrayList<Book>) : RecyclerView.Adapter<Boo
         return this.books.size
     }
 
+    //update book list in adapter
     fun refreshBooks(myBooks: ArrayList<Book>){
         books.clear()
         books.addAll(myBooks)
-        notifyDataSetChanged()
     }
 }

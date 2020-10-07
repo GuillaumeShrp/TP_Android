@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Bookshelf</string>
-    <string name="add_a_book">Add a book</string>
-    <string name="candide">Candide</string>
-    <string name="_1675">1675</string>
-    <string name="voltaire">Voltaire</string>
-    <string name="published_in">Published in:</string>
-    <string name="author_name">Author name:</string>
-    <string name="book_title">Book title:</string>
-    <string name="save">Save</string>
+    <string name="app_name">    Bibliothèque</string>
+    <string name="add_a_book">  Ajouter un livre</string>
+    <string name="candide">     Candide</string>
+    <string name="_1675">       1675</string>
+    <string name="voltaire">    Voltaire</string>
+    <string name="published_in">Date de publication:</string>
+    <string name="author_name"> Auteur:</string>
+    <string name="book_title">  Titre du livre:</string>
+    <string name="save">        Enregistrer</string>
 </resources>
