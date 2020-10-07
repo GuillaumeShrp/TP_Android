@@ -6,9 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/a_main_fragBL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></RelativeLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/a_main_btn_addBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToBookCreation"
@@ -19,14 +27,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/a_rcv_case"
-        android:layout_width="417dp"
-        android:layout_height="686dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:itemCount="10"
-        tools:listitem="@layout/row_book" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,10 @@ class CreateBookActivity : AppCompatActivity() {
         returnIntent.putExtra("Added Book", addedBook)
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
+        /**
+         * les activités sont empilées a leur creation
+         * finish() depile alors la liste pour acceder à activité de retour
+         */
     }
 
     fun createBook(view: View) {
