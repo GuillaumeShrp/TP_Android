@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BookCreator {
     private val startActivity2RequestCode = 1
@@ -41,27 +42,34 @@ class MainActivity : AppCompatActivity(), BookCreator {
     */
 
     fun goToBookCreation(view: View) {
-        val intent = Intent(this, CreateBookActivity::class.java)   //move from this to ..
-        startActivityForResult(intent, startActivity2RequestCode)
+        displayBookCreation()
+        //val intent = Intent(this, CreateBookActivity::class.java)   //move from this to ..
+        //startActivityForResult(intent, startActivity2RequestCode)
     }
 
 
     //creer une transaction pour ajouter le fragment et l'afficher qlqpart
-    fun displayBookList() {
+    private fun displayBookList() {
         //// ############################
         //corriger le pbl ici --> faire le caste d'un arraylist
         val bookListFragment = BookListFragment.newInstance(ArrayList(bookshelf.getAllBooks())) //appel de la fonction static
         val bookListFragmentTransaction = supportFragmentManager.beginTransaction()
+
         bookListFragmentTransaction.replace(R.id.a_main_layout_fragment, bookListFragment)
         bookListFragmentTransaction.commit()
+
+        a_main_btn_addBook.visibility = View.VISIBLE
     }
 
     //creer une transaction pour ajouter le fragment et l'afficher qlqpart (fragmnt ver)
-    fun displayBookCreation() {
+    private fun displayBookCreation() {
         val createBookFragment = CreateBookFragment()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.a_main_layout_fragment, createBookFragment)
+
+        fragmentTransaction.add(R.id.a_main_layout_fragment, createBookFragment)
         fragmentTransaction.commit()
+
+        a_main_btn_addBook.visibility = View.GONE //element n'existe pas != invisible
     }
 
     override fun onBookCreated(book: Book) {
@@ -90,6 +98,9 @@ class MainActivity : AppCompatActivity(), BookCreator {
     }
 
 
+    override fun closeBookCreation (){
+        displayBookList()
+    }
 
     /**
      * tips:

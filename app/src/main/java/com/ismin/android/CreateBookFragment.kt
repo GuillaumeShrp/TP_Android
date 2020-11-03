@@ -52,4 +52,5 @@ class CreateBookFragment : Fragment() {
 //pour permettre le dialogue de fragmnt a activity
 interface BookCreator {
     fun onBookCreated(book: Book)
+    fun closeBookCreation()
 }

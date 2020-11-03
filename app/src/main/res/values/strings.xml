@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">    Bibliothèque</string>
-    <string name="add_a_book">  Ajouter un livre</string>
-    <string name="candide">     Candide</string>
-    <string name="_1675">       1675</string>
-    <string name="voltaire">    Voltaire</string>
-    <string name="published_in">Date de publication:</string>
-    <string name="author_name"> Auteur:</string>
-    <string name="book_title">  Titre du livre:</string>
-    <string name="save">        Enregistrer</string>
+    <string name="app_name" translatable="false">Bookshelf</string>
+    <string name="candide" translatable="false">Candide</string>
+    <string name="_1675" translatable="false">1675</string>
+    <string name="voltaire" translatable="false">Voltaire</string>
+    <string name="published_in">Date:</string>
+    <string name="author_name">Author:</string>
+    <string name="book_title">Title:</string>
+    <string name="save">Save</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="add_a_book">Add a book</string>
 </resources>

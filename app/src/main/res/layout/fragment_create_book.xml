@@ -6,80 +6,102 @@
     android:layout_height="match_parent"
     tools:context=".CreateBookActivity">
 
-
-    <EditText
-        android:id="@+id/f_createBook_edt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/candide"
-        android:inputType="textPersonName"
+    <View
+        android:id="@+id/f_createBook_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#603700B3"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"></View>
 
-    <TextView
-        android:id="@+id/f_createBook_txv_title"
-        android:layout_width="wrap_content"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/book_title"
-        app:layout_constraintBottom_toTopOf="@+id/f_createBook_edt_title"
-        app:layout_constraintStart_toStartOf="@+id/f_createBook_edt_title" />
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="108dp">
 
-    <EditText
-        android:id="@+id/f_createBook_edt_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/voltaire"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/f_createBook_edt_title" />
 
-    <TextView
-        android:id="@+id/f_createBook_txv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/author_name"
-        app:layout_constraintBottom_toTopOf="@+id/f_createBook_edt_name"
-        app:layout_constraintStart_toStartOf="@+id/f_createBook_edt_name" />
+        <EditText
+            android:id="@+id/f_createBook_edt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/candide"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/f_createBook_edt_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/_1675"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/f_createBook_edt_name" />
+        <TextView
+            android:id="@+id/f_createBook_txv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_title"
+            app:layout_constraintBottom_toTopOf="@+id/f_createBook_edt_title"
+            app:layout_constraintStart_toStartOf="@+id/f_createBook_edt_title" />
 
-    <TextView
-        android:id="@+id/f_createBook_txv_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/published_in"
-        app:layout_constraintBottom_toTopOf="@+id/f_createBook_edt_date"
-        app:layout_constraintStart_toStartOf="@+id/f_createBook_edt_date" />
+        <EditText
+            android:id="@+id/f_createBook_edt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/voltaire"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/f_createBook_edt_title" />
 
-    <Button
-        android:id="@+id/f_createBook_btn_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:onClick="createBook"
-        android:text="@string/save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/f_createBook_edt_date" />
+        <TextView
+            android:id="@+id/f_createBook_txv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/author_name"
+            app:layout_constraintBottom_toTopOf="@+id/f_createBook_edt_name"
+            app:layout_constraintStart_toStartOf="@+id/f_createBook_edt_name" />
 
+        <EditText
+            android:id="@+id/f_createBook_edt_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:layout_marginBottom="32dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/_1675"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/f_createBook_btn_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/f_createBook_edt_name" />
+
+        <TextView
+            android:id="@+id/f_createBook_txv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/published_in"
+            app:layout_constraintBottom_toTopOf="@+id/f_createBook_edt_date"
+            app:layout_constraintStart_toStartOf="@+id/f_createBook_edt_date" />
+
+        <Button
+            android:id="@+id/f_createBook_btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:onClick="createBook"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
