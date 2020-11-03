@@ -60,5 +60,10 @@ class MainActivity : AppCompatActivity() {
      * val qlqch = obj!!.getQlqch()
      * !! a la place de ? qui ne permet pas de type nul
      * assure qu l'element est definit precedemment
+     *
+     * model mvc:
+     * m=book
+     * v=xml
+     * c=activity
      */
 }

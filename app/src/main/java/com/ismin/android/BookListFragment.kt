@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
-private const val ID_BOOKS = "id_books" //clé pour l'argument
+private const val ID_BOOKS = "id_books" //clé pour l'argument doit etre unique
 
 /**
  * A simple [Fragment] subclass.
@@ -25,8 +25,12 @@ class BookListFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             myBooks = it.getSerializable(ID_BOOKS) as ArrayList<Book>
-
         }
+
+        /** let equal to :
+        books = argument!!.getseralisablr!!(idbok) as ArrayListBook
+        //!! car peut ne pas etre def -> assure qu'il les
+         */
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -41,16 +45,26 @@ class BookListFragment : Fragment() {
         recyclerView.adapter = bookAdapter
 
 
-        return framgentView
+        return framgentView //cest sur cette vue qu'on fait les findviewbyid
+        //vuue = affichage du fragmment
     }
 
+    //pour recuperer les livres dans le fragment:
     companion object { //element commun a la classe : equal to static
         @JvmStatic
-        fun newInstance(books: ArrayList<Book>) =
+        fun newInstance(books: ArrayList<Book>) = //donne les param quon veut donner au fragment
+        //pour ne pas utiliser le constructeur pour generer le fragment
+        //cache l'appel du constructeur
             BookListFragment().apply {
                 arguments = Bundle().apply {
                     putSerializable(ID_BOOKS, books)
                 }
             }
+
+            /** apply equal to :
+            val bundle = Bundle()
+            byndle.putSeriarial( idbook, book)
+            val booklistfragmtznt = booklistframg()
+             */
     }
 }
