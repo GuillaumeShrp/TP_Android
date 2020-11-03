@@ -26,4 +26,8 @@ class Bookshelf() {
         return storage.count()
     }
 
+    fun clear(): Unit {
+         storage.clear()
+    }
+
 }

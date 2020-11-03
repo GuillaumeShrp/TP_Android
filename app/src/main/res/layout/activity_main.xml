@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
-        android:id="@+id/a_main_fragBL"
+        android:id="@+id/a_main_layout_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
