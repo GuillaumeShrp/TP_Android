@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity(), BookCreator {
 
         bookService = retrofit.create(BookService::class.java)
 
+        /**
         bookService.getAllBooks().enqueue(object : Callback<ArrayList<Book>> {
             override fun onResponse(
                 call: Call<ArrayList<Book>>,
@@ -51,15 +52,33 @@ class MainActivity : AppCompatActivity(), BookCreator {
             }
 
             override fun onFailure(call: Call<ArrayList<Book>>, t: Throwable) {
-                Toast.makeText(
-                    applicationContext,
-                    "Erreur de reseau / ${t.localizedMessage}",
-                    Toast.LENGTH_LONG
-                ).show()
+                displayToastError(t)
             }
-        })
+        }) SIMPLIFIER EN ::::::*/
+        bookService.getAllBooks().enqueue {
+            onResponse = {
+                val allBooks = it.body()
+                allBooks?.forEach {
+                    bookshelf.addBook(it)
+                    displayBookList()
+                }
+            }
+            onFailure = {
+                if (it != null) {
+                    displayToastError(it)
+                }
+            }
+        }
 
 
+    }
+
+    private fun displayToastError(t: Throwable) {
+        Toast.makeText(
+            applicationContext,
+            "Erreur de reseau / ${t.localizedMessage}",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     /**plus besoin avec les ffragment car dans le onBookCreated
@@ -111,16 +130,30 @@ class MainActivity : AppCompatActivity(), BookCreator {
 
     override fun onBookCreated(book: Book) {
         //ajouter le livre sur le serveur:
-        bookService.createBook(book).enqueue(object : Callback<Book> {
+        bookService.createBook(book).enqueue {
+            onResponse = {
+                bookshelf.addBook(it.body()!!)
+                closeBookCreation()
+            }
+            onFailure = {
+                if (it != null) {
+                    displayToastError(it)
+                }
+            }
+        }
+
+
+
+        (object : Callback<Book> {
             override fun onResponse(call: Call<Book>, response: Response<Book>) {
                 bookshelf.addBook(response.body()!!)
                 closeBookCreation()
             }
 
             override fun onFailure(call: Call<Book>, t: Throwable) {
+                displayToastError(t)
             }
         })
-
 
         //bookshelf.addBook(book)
         displayBookList()

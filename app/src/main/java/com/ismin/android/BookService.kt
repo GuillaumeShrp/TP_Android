@@ -7,6 +7,9 @@ import retrofit2.http.POST
 import java.util.*
 import com.ismin.android.Book as Book
 
+/** on decrit seulement une interface, retrofit de genere la classe
+ */
+
 interface BookService {
 
     @GET("books")
