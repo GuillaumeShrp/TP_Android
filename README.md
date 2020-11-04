@@ -4,25 +4,30 @@ Course followed by students of Mines St Etienne, ISMIN - M2 Computer Science.
 
 [![Mines St Etienne](./logo.png)](https://www.mines-stetienne.fr/)
 
-# TP2: Android Basics
+# TP5: HTTP Requests
 
 ## 📝 Goal
 
-The goal is to discover `Activity` and Android Layout System by implementing a screen to add a book.
+The goal is to link the app to a Rest API using [Retrofit](https://square.github.io/retrofit/):
 
-To do so:
-- Copy `Book` and `Bookshelf` of the previous TP 
-- Create a `CreateBookActivity` with in its UI the necessary fields to create a book. For instance:
-  - A text input for the author
-  - A text input for the title
-  - A text input for the date
-  - A `Save` button 
-- Add a `Create book` button in the `MainActivity`
-- Display `CreateBookActivity` when user clicks on the `Create book` button
-- Finally, when user clicks on the `Save` button:
-  - Create an instance of `Book` with UI inputs
-  - Finish `CreateBookActivity` and send back the `Book` to the `MainActivity`
-  - Display the created book in the `MainActivity`
+You can either use:
+ - your own Book Rest API
+ - a generic one accessible on: https://bookshelf-gme.cleverapps.io/books
+
+First:
+- Add retrofit dependencies (see course slides) to `build.gradle` ✅
+
+Then:
+- Create a `BookService` interface ✅
+- Add a `getAllBooks` function with annotations matching the API ✅
+- Create an instance of `retrofit` and instantiate `BookService` with it in `MainActivity` ✅
+- Call `getAllBooks` in the `onCreate` function and display the books returned by the server ✅
+
+- Add a `createBook` function with annotations matching the API
+- Call `createBook` to post a new book to the server and then display the list of books (including the freshly created one)
+
+Finally:
+- Add some Toasts to properly display and handle network errors
 
 ## 🚀 Getting Started
 
@@ -31,8 +36,3 @@ To do so:
 
 That's it! You can code!
 
-## 🛰 Extra:
-
-- Validate the `date` input to be sure it is well formatted 
-- Handle the `date` attribute as a Date and not a string
-- Add some animations when the app is switching between the 2 activities
