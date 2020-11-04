@@ -7,22 +7,59 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity(), BookCreator {
     private val startActivity2RequestCode = 1
-    var bookshelf = Bookshelf()
+    private var bookshelf = Bookshelf()
+    private lateinit var bookService: BookService
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bookshelf.addBook(Book(title = "Un livre", author = "de cet auteur", date = "2020/20/10"))
+        /**bookshelf.addBook(Book(title = "Un livre", author = "de cet auteur", date = "2020/20/10"))
         bookshelf.addBook(Book(title = "Un livre2", author = "de cet auteur", date = "2020/20/10"))
         bookshelf.addBook(Book(title = "Un livre3", author = "de cet auteur", date = "2020/20/10"))
+        */
 
-        displayBookList()
+        //maintenant on passe par le serveur:
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://boobshelf-app-gsa.cleverapps.io") //pour faire une erreur de reseau -> .com
+            .build()
+
+        bookService = retrofit.create(BookService::class.java)
+
+        bookService.getAllBooks().enqueue(object : Callback<ArrayList<Book>> {
+            override fun onResponse(
+                call: Call<ArrayList<Book>>,
+                response: Response<ArrayList<Book>>
+            ) {
+                val allBooks = response.body()
+                allBooks?.forEach {
+                    bookshelf.addBook(it)
+                    displayBookList()
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<Book>>, t: Throwable) {
+                Toast.makeText(
+                    applicationContext,
+                    "Erreur de reseau / ${t.localizedMessage}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
+
+
     }
 
     /**plus besoin avec les ffragment car dans le onBookCreated
@@ -73,7 +110,19 @@ class MainActivity : AppCompatActivity(), BookCreator {
     }
 
     override fun onBookCreated(book: Book) {
-        bookshelf.addBook(book)
+        //ajouter le livre sur le serveur:
+        bookService.createBook(book).enqueue(object : Callback<Book> {
+            override fun onResponse(call: Call<Book>, response: Response<Book>) {
+                bookshelf.addBook(response.body()!!)
+                closeBookCreation()
+            }
+
+            override fun onFailure(call: Call<Book>, t: Throwable) {
+            }
+        })
+
+
+        //bookshelf.addBook(book)
         displayBookList()
     }
 
